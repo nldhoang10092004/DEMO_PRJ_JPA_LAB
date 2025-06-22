@@ -66,6 +66,8 @@ public class LoginController extends HttpServlet {
             if (partial != null) {
                 // 3) Lấy đầy đủ thông tin user
                 User fullUser = userDao.selectUser(partial.getId());
+                // Ghi thông tin user vào session để các request sau xác thực
+                req.getSession().setAttribute("user", fullUser);
                 // Đưa vào request để JSP có thể in ra
                 req.setAttribute("user", fullUser);
 
