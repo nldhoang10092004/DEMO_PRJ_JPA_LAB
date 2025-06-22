@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence" version="3.0">
+  <persistence-unit name="TestDBPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+    <!-- Entity -->
+    <class>model.Product</class>
+
+    <!-- Kết nối SQL Server -->
+    <properties>
+      <property name="jakarta.persistence.jdbc.driver"
+                value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="jakarta.persistence.jdbc.url"
+                value="jdbc:sqlserver://localhost\\TRANGGPTM:1433;
+                       databaseName=TestDB_JPA;encrypt=true;trustServerCertificate=true;"/>
+      <property name="jakarta.persistence.jdbc.user" value="sa"/>
+      <property name="jakarta.persistence.jdbc.password" value="123456"/>
+
+      <!-- Hibernate -->
+      <property name="hibernate.dialect"
+                value="org.hibernate.dialect.SQLServerDialect"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+      <!-- validate = chỉ kiểm tra schema, không tự tạo/sửa -->
+      <property name="hibernate.hbm2ddl.auto" value="validate"/>
+    </properties>
+  </persistence-unit>
+</persistence>
