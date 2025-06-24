@@ -10,7 +10,7 @@ import java.util.List;
 public class UserDAO implements IUserDAO {
     private static final String LOGIN_JPQL =
         "SELECT NEW model.User(u.id, u.username, u.email, u.role) "
-      + "FROM User u WHERE u.username = :u AND u.password = :p";
+      + "FROM User u WHERE LOWER(u.username) = LOWER(:u) AND u.password = :p";
 
     /** Tương đương LOGIN1 JDBC */
     public User checkLogin(String username, String password) throws SQLException {
